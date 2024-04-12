@@ -8,17 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		AA4EDF462BC9D4950008766D /* ItranslatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */; };
-		AA4EDF482BC9D4950008766D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF472BC9D4950008766D /* ContentView.swift */; };
 		AA4EDF4A2BC9D4960008766D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4EDF492BC9D4960008766D /* Assets.xcassets */; };
 		AA4EDF4D2BC9D4960008766D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4EDF4C2BC9D4960008766D /* Preview Assets.xcassets */; };
+		AA4EDF5C2BC9D5880008766D /* ItranslatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF5B2BC9D5880008766D /* ItranslatorRepository.swift */; };
+		AA4EDF5E2BC9D5A90008766D /* ItranslatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF5D2BC9D5A90008766D /* ItranslatorModel.swift */; };
+		AA4EDF602BC9D5C30008766D /* ItranslatorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF5F2BC9D5C30008766D /* ItranslatorMapper.swift */; };
+		AA4EDF622BC9D5E90008766D /* AzureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF612BC9D5E90008766D /* AzureManager.swift */; };
+		AA4EDF652BC9DA130008766D /* ItranslatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF642BC9DA130008766D /* ItranslatorView.swift */; };
+		AA4EDF692BC9DCF90008766D /* ItranslatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF682BC9DCF90008766D /* ItranslatorViewModel.swift */; };
+		AA4EDF6B2BC9E8EE0008766D /* ItranslatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6A2BC9E8EE0008766D /* ItranslatorInteractor.swift */; };
+		AA4EDF6D2BC9EB160008766D /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */; };
+		AA4EDF6F2BC9EE630008766D /* AzureManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6E2BC9EE630008766D /* AzureManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA4EDF422BC9D4950008766D /* Itranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Itranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorApp.swift; sourceTree = "<group>"; };
-		AA4EDF472BC9D4950008766D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA4EDF492BC9D4960008766D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA4EDF4C2BC9D4960008766D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA4EDF5B2BC9D5880008766D /* ItranslatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorRepository.swift; sourceTree = "<group>"; };
+		AA4EDF5D2BC9D5A90008766D /* ItranslatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorModel.swift; sourceTree = "<group>"; };
+		AA4EDF5F2BC9D5C30008766D /* ItranslatorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorMapper.swift; sourceTree = "<group>"; };
+		AA4EDF612BC9D5E90008766D /* AzureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureManager.swift; sourceTree = "<group>"; };
+		AA4EDF642BC9DA130008766D /* ItranslatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorView.swift; sourceTree = "<group>"; };
+		AA4EDF682BC9DCF90008766D /* ItranslatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorViewModel.swift; sourceTree = "<group>"; };
+		AA4EDF6A2BC9E8EE0008766D /* ItranslatorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorInteractor.swift; sourceTree = "<group>"; };
+		AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
+		AA4EDF6E2BC9EE630008766D /* AzureManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */,
-				AA4EDF472BC9D4950008766D /* ContentView.swift */,
 				AA4EDF492BC9D4960008766D /* Assets.xcassets */,
 				AA4EDF4B2BC9D4960008766D /* Preview Content */,
+				AA4EDF572BC9D50D0008766D /* Domain */,
+				AA4EDF562BC9D5050008766D /* Data */,
+				AA4EDF532BC9D4B30008766D /* Presentation */,
+				AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */,
 			);
 			path = Itranslator;
 			sourceTree = "<group>";
@@ -65,6 +84,83 @@
 				AA4EDF4C2BC9D4960008766D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AA4EDF532BC9D4B30008766D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF642BC9DA130008766D /* ItranslatorView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AA4EDF542BC9D4C00008766D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF5D2BC9D5A90008766D /* ItranslatorModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA4EDF562BC9D5050008766D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF5A2BC9D53C0008766D /* Repository */,
+				AA4EDF542BC9D4C00008766D /* Model */,
+				AA4EDF592BC9D5260008766D /* Mapper */,
+				AA4EDF582BC9D51F0008766D /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AA4EDF572BC9D50D0008766D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF672BC9DAC20008766D /* ViewModel */,
+				AA4EDF662BC9DAAE0008766D /* Interactor */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AA4EDF582BC9D51F0008766D /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF612BC9D5E90008766D /* AzureManager.swift */,
+				AA4EDF6E2BC9EE630008766D /* AzureManagerProtocol.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		AA4EDF592BC9D5260008766D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF5F2BC9D5C30008766D /* ItranslatorMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		AA4EDF5A2BC9D53C0008766D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF5B2BC9D5880008766D /* ItranslatorRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AA4EDF662BC9DAAE0008766D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF6A2BC9E8EE0008766D /* ItranslatorInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AA4EDF672BC9DAC20008766D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA4EDF682BC9DCF90008766D /* ItranslatorViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +233,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4EDF482BC9D4950008766D /* ContentView.swift in Sources */,
+				AA4EDF652BC9DA130008766D /* ItranslatorView.swift in Sources */,
+				AA4EDF692BC9DCF90008766D /* ItranslatorViewModel.swift in Sources */,
+				AA4EDF602BC9D5C30008766D /* ItranslatorMapper.swift in Sources */,
+				AA4EDF6F2BC9EE630008766D /* AzureManagerProtocol.swift in Sources */,
+				AA4EDF5E2BC9D5A90008766D /* ItranslatorModel.swift in Sources */,
+				AA4EDF6B2BC9E8EE0008766D /* ItranslatorInteractor.swift in Sources */,
 				AA4EDF462BC9D4950008766D /* ItranslatorApp.swift in Sources */,
+				AA4EDF5C2BC9D5880008766D /* ItranslatorRepository.swift in Sources */,
+				AA4EDF6D2BC9EB160008766D /* InjectionKey.swift in Sources */,
+				AA4EDF622BC9D5E90008766D /* AzureManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
