@@ -7,20 +7,19 @@
 
 import Foundation
 
-class AzureManager: AzureManagerProtocol {
-    static let shared = AzureManager()
+class ItranslatorManager: ItranslatorManagerProtocol {
 
     let apiKey = "0b5cd4905bf9425b8e16e48b52277cc3"
     let endpoint = "https://api.cognitive.microsofttranslator.com"
     let location = "northeurope"
 
-    func translate(text: String, from sourceLanguage: String, to targetLanguages: [String], completion: @escaping (Result<String, Error>) -> Void) {
+    func translate(text: String, from sourceLanguage: String, to targetLanguage: String, completion: @escaping (Result<String, Error>) -> Void) {
         var urlComponents = URLComponents(string: endpoint + "/translate")!
         urlComponents.queryItems = [
             URLQueryItem(name: "api-version", value: "3.0"),
             URLQueryItem(name: "from", value: sourceLanguage)
         ]
-        urlComponents.queryItems?.append(contentsOf: targetLanguages.map { URLQueryItem(name: "to", value: $0) })
+        urlComponents.queryItems?.append(URLQueryItem(name: "to", value: targetLanguage))
 
         guard let url = urlComponents.url else {
             completion(.failure(NSError(domain: "AzureManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
@@ -35,8 +34,13 @@ class AzureManager: AzureManagerProtocol {
         request.addValue(UUID().uuidString, forHTTPHeaderField: "X-ClientTraceId")
 
         let body = ["Text": text]
-        let requestBody = try! JSONSerialization.data(withJSONObject: [body], options: [])
-        request.httpBody = requestBody
+        do {
+            let requestBody = try JSONSerialization.data(withJSONObject: [body], options: [])
+            request.httpBody = requestBody
+
+        } catch {
+            print(error)
+        }
 
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
@@ -64,16 +68,14 @@ class AzureManager: AzureManagerProtocol {
         }
         task.resume()
     }
-    
-
 }
-private struct AzureManagerKey: InjectionKey {
-    static var currentValue: AzureManagerProtocol = AzureManager()
+private struct ItranslatorManagerKey: InjectionKey {
+    static var currentValue: ItranslatorManagerProtocol = ItranslatorManager()
 }
 
 extension InjectedValues {
-    var azureManager: AzureManagerProtocol {
-        get { Self[AzureManagerKey.self]}
-        set{ Self[AzureManagerKey.self] = newValue }
-    }
+    var itranslatorManager: ItranslatorManagerProtocol {
+        get { Self[ItranslatorManagerKey.self]}
+        set { Self[ItranslatorManagerKey.self] = newValue }
+}
 }
