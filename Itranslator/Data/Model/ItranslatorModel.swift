@@ -7,8 +7,10 @@
 
 import Foundation
 struct ItranslatorModel: Codable {
-    let code: String
-    let name: String
-    let nativeName: String
-    let dir: String // Direction
+    let translations: [Translation]
+}
+
+struct Translation: Codable {
+    let to: String
+    let text: String
 }

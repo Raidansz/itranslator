@@ -6,24 +6,16 @@
 //
 
 import Foundation
-struct ItranslatorInteractor : ItranslatorInteractorProtocol {
-    private var itranslatorRepository:ItranslatorRepositoryProtocol = ItranslatorRepository()
-    
-    init(itranslatorRepository: ItranslatorRepositoryProtocol) {
+struct ItranslatorInteractor: ItranslatorInteractorProtocol {
+    private var itranslatorRepository: ItranslatorRepositoryProtocol = ItranslatorRepository()
+    init(itranslatorRepository: ItranslatorRepositoryProtocol = ItranslatorRepository()) {
         self.itranslatorRepository = itranslatorRepository
     }
-    
-    
-    func invoke(sourceText: String, sourceLanguage: String, targetLanguages: String) async throws -> [ItranslatorModel] {
-        try await itranslatorRepository.translateText(sourceText: sourceText, sourceLanguage: sourceLanguage, targetLanguages: targetLanguages)
+    func invoke(sourceText: String, sourceLanguage: String, targetLanguages: String)  async throws -> [ItranslatorModel] {
+       let itranslatorModel = try await itranslatorRepository.translateText(sourceText: sourceText, sourceLanguage: sourceLanguage, targetLanguage: targetLanguages)
+        return itranslatorModel
     }
-    
-    
-    
 }
-
-
-
 
 protocol ItranslatorInteractorProtocol {
     func invoke(sourceText: String, sourceLanguage: String, targetLanguages: String) async throws -> [ItranslatorModel]
