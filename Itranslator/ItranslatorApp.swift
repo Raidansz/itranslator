@@ -11,7 +11,7 @@ import SwiftUI
 struct ItranslatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ItranslatorView(viewModel: ItranslatorViewModel())
+            ItranslatorView(viewModel: ItranslatorViewModel(languagesCount: 30))
         }
     }
 }
