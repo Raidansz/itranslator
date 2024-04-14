@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
     struct ItranslatorView: View {
         @StateObject var viewModel: ItranslatorViewModel
 
@@ -43,7 +42,6 @@ import SwiftUI
             }
         }
     }
-
 
 
 #Preview {
