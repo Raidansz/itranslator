@@ -13,8 +13,8 @@ final class ItranslatorRepository: ItranslatorRepositoryProtocol {
     private var itranslatorMapper: ItranslatorMapper {
         ItranslatorMapper()
     }
-    init(azureManager: ItranslatorManagerProtocol = ItranslatorManager()) {
-        self.itranslatorManager = azureManager
+    init(itranslatorManager: ItranslatorManagerProtocol = ItranslatorManager()) {
+        self.itranslatorManager = itranslatorManager
     }
     func translateText(sourceText: String, sourceLanguage: String, targetLanguage: String) async throws -> [ItranslatorModel] {
         return try await withCheckedThrowingContinuation { continuation in

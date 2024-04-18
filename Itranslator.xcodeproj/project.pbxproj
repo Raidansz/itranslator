@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA34721A2BD1A1350039E380 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3472192BD1A1350039E380 /* LaunchView.swift */; };
+		AA34721F2BD1A2A20039E380 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34721E2BD1A2A20039E380 /* LaunchViewModel.swift */; };
 		AA4EDF462BC9D4950008766D /* ItranslatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */; };
 		AA4EDF4A2BC9D4960008766D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4EDF492BC9D4960008766D /* Assets.xcassets */; };
 		AA4EDF4D2BC9D4960008766D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4EDF4C2BC9D4960008766D /* Preview Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA3472192BD1A1350039E380 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		AA34721E2BD1A2A20039E380 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		AA4EDF422BC9D4950008766D /* Itranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Itranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorApp.swift; sourceTree = "<group>"; };
 		AA4EDF492BC9D4960008766D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA34721B2BD1A2280039E380 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AA3472192BD1A1350039E380 /* LaunchView.swift */,
+				AA34721E2BD1A2A20039E380 /* LaunchViewModel.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		AA4EDF392BC9D4950008766D = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 		AA4EDF532BC9D4B30008766D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AA34721B2BD1A2280039E380 /* LaunchScreen */,
 				AA4EDF642BC9DA130008766D /* ItranslatorView.swift */,
 			);
 			path = Presentation;
@@ -255,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA4EDF652BC9DA130008766D /* ItranslatorView.swift in Sources */,
+				AA34721A2BD1A1350039E380 /* LaunchView.swift in Sources */,
 				AA4EDF692BC9DCF90008766D /* ItranslatorViewModel.swift in Sources */,
 				AA4EDF602BC9D5C30008766D /* ItranslatorMapper.swift in Sources */,
 				AA4EDF6F2BC9EE630008766D /* ItranslatorManagerProtocol.swift in Sources */,
@@ -264,6 +279,7 @@
 				AA4EDF5C2BC9D5880008766D /* ItranslatorRepository.swift in Sources */,
 				AA4EDF6D2BC9EB160008766D /* InjectionKey.swift in Sources */,
 				AA4EDF622BC9D5E90008766D /* ItranslatorManager.swift in Sources */,
+				AA34721F2BD1A2A20039E380 /* LaunchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,76 +5,98 @@
 //  Created by Raidan on 12/04/2024.
 //
 import SwiftUI
-
 struct ItranslatorView: View {
-    @StateObject var viewModel: ItranslatorViewModel
-
-    @Environment(\.colorScheme) var colorScheme
-
-    let languages = [
-        "English": "Hello",
-        "Spanish": "Hola",
-        "French": "Bonjour",
-        "German": "Hallo",
-        "Italian": "Ciao",
-        "Japanese": "こんにちは",
-        "Russian": "Привет",
-        "Chinese": "你好",
-        "Arabic": "مرحبا",
-        "Portuguese": "Olá",
-        "Korean": "안녕하세요",
-        "Dutch": "Hallo",
-        "Swedish": "Hej",
-        "Greek": "Γεια σας",
-        "Turkish": "Merhaba",
-        "Hindi": "नमस्ते",
-        "Bengali": "হ্যালো",
-        "Vietnamese": "Xin chào",
-        "Thai": "สวัสดี",
-        "Hebrew": "שלום",
-        "Polish": "Cześć",
-        "Indonesian": "Halo",
-        "Czech": "Ahoj",
-        "Hungarian": "Szia",
-        "Finnish": "Hei",
-        "Danish": "Hej",
-        "Norwegian": "Hei",
-        "Romanian": "Salut"
-    ]
-
+    @ObservedObject var viewModel: ItranslatorViewModel
+    @State private var debounceText: String = ""
+    @State private var isEditing: Bool = false
+    
     var body: some View {
-        ZStack {
-            colorScheme == .dark ? Color.black : Color.white
-            VStack(spacing: 20) {
-                ForEach(Array(languages.keys.enumerated()), id: \.offset) { index, language in
-                    Text(languages[language]!)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                      //  .blur(radius: 0.5)
-                        .offset(
-                            x: CGFloat.random(in: -400...400),
-                            y: CGFloat.random(in: -50...50)
-                        )
-                        .opacity(viewModel.opacities[index])
-                        .animation(
-                          Animation
-                            .easeInOut(duration: 6)
-                            .repeatForever(autoreverses: true),
-                          value: UUID()
-                        )                        .onAppear {
-                            viewModel.objectWillChange.send()
-                        }
-                }
+        VStack {
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color(.secondarySystemBackground))
+                    .frame(width: 400, height: 200)
+                    .onTapGesture { // Resign focus when tapping outside
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                
+                TextView(text: $debounceText, isEditing: $isEditing)
+                    .padding()
+                    .frame(width: 400, height: 200)
+                    .background(Color(.secondarySystemBackground)) // Make entire frame writable
             }
+            .padding(.horizontal)
+            Spacer()
+            
+            Button("Translate") {
+                viewModel.translate(sourceText: debounceText, sourceLanguage: "en", targetLanguages: "ar")
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(10)
+            Spacer()
+            
+            Text(viewModel.currentTranslationModel?.text ?? "")
+                .padding()
+                .frame(width: 400, height: 200)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(Color(.secondarySystemBackground))
+                )
+                .padding(.horizontal)
+            Spacer()
         }
         .padding()
-        .edgesIgnoringSafeArea(.all)
+        .background(Color(.systemBackground))
     }
 }
 
-struct ItranslatorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItranslatorView(viewModel: ItranslatorViewModel(languagesCount: 30))
+struct TextView: UIViewRepresentable {
+    @Binding var text: String
+    @Binding var isEditing: Bool
+    
+    func makeUIView(context: Context) -> UITextView {
+        let textView = UITextView()
+        textView.isEditable = true
+        textView.isScrollEnabled = true
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
+        textView.delegate = context.coordinator
+        return textView
+    }
+    
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.text = text
+        if isEditing {
+            uiView.becomeFirstResponder()
+        } else {
+            uiView.resignFirstResponder()
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(text: $text, isEditing: $isEditing)
+    }
+    
+    class Coordinator: NSObject, UITextViewDelegate {
+        @Binding var text: String
+        @Binding var isEditing: Bool
+        
+        init(text: Binding<String>, isEditing: Binding<Bool>) {
+            _text = text
+            _isEditing = isEditing
+        }
+        
+        func textViewDidChange(_ textView: UITextView) {
+            text = textView.text
+        }
+        
+        func textViewDidBeginEditing(_ textView: UITextView) {
+            isEditing = true
+        }
+        
+        func textViewDidEndEditing(_ textView: UITextView) {
+            isEditing = false
+        }
     }
 }

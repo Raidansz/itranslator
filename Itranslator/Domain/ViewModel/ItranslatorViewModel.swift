@@ -10,18 +10,18 @@ import Combine
 
 class ItranslatorViewModel: ObservableObject {
     // MARK: - Properties
-    @Published var opacities: [Double] = []
 
     private let itranslatorInteractor: ItranslatorInteractorProtocol
     // MARK: - Output
-    @Published private(set) var translationModel: [Translation] = []
+    @Published private(set) var translationHistoryModel: [Translation] = []
     // MARK: - Input
     @Published var textToBeTranslated: String = ""
+    @Published var currentTranslationModel: Translation?
+
     // MARK: - Initialization
-    init(itranslatorInteractor: ItranslatorInteractorProtocol = ItranslatorInteractor() , languagesCount: Int) {
+    init(itranslatorInteractor: ItranslatorInteractorProtocol = ItranslatorInteractor()) {
         self.itranslatorInteractor = itranslatorInteractor
         translate(sourceText: "Hello friend", sourceLanguage: "en", targetLanguages: "ar")
-        startOpacityAnimation(languagesCount: languagesCount)
     }
     deinit {
         print("deinit")
@@ -31,24 +31,11 @@ class ItranslatorViewModel: ObservableObject {
             let response = try await itranslatorInteractor.invoke(sourceText: sourceText, sourceLanguage: sourceLanguage, targetLanguages: targetLanguages).first?.translations
             if let response = response {
               await MainActor.run {
-                  translationModel.append(contentsOf: response)
-                  print(response)
+                  translationHistoryModel.append(contentsOf: response)
+                  currentTranslationModel = response.first
+                //  print(response)
                 }
             }
-        }
-    }
-    func startOpacityAnimation(languagesCount: Int) {
-        // Initialize opacities with alternating values to simulate fading in and out
-        for index in 0..<languagesCount {
-            opacities.append(Double(index % 2))
-        }
-        
-        // Update opacities every 2 seconds to simulate fading in and out smoothly
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-            for index in 0..<self.opacities.count {
-                self.opacities[index] = self.opacities[index] == 1 ? 0 : 1
-            }
-            self.objectWillChange.send()
         }
     }
 
