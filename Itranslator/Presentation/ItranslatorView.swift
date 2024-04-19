@@ -30,6 +30,8 @@ struct ItranslatorView: View {
             Spacer()
             
             Button("Translate") {
+                viewModel.updateRemoteDB(translate: "raidan", translated: "اثاثاث")
+
                 viewModel.translate(sourceText: debounceText, sourceLanguage: "en", targetLanguages: "ar")
             }
             .padding()

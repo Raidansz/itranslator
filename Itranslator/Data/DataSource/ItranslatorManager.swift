@@ -9,7 +9,7 @@ import Foundation
 
 class ItranslatorManager: ItranslatorManagerProtocol {
 
-    let apiKey = "0b5cd4905bf9425b8e16e48b52277cc3"
+    let apiKey = getAPIKey() ?? ""
     let endpoint = "https://api.cognitive.microsofttranslator.com"
     let location = "northeurope"
 
@@ -67,6 +67,20 @@ class ItranslatorManager: ItranslatorManagerProtocol {
             }
         }
         task.resume()
+    }
+   private static func getAPIKey() -> String? {
+        guard let filePath = Bundle.main.path(forResource: "Config", ofType: "plist") else {
+            print("Plist file not found")
+            return nil
+        }
+
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "APIKey") as? String else {
+            print("API Key not found in plist")
+            return nil
+        }
+
+        return value
     }
 }
 private struct ItranslatorManagerKey: InjectionKey {
