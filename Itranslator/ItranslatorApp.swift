@@ -11,15 +11,23 @@ import FirebaseCore
 import FirebaseAuth
 @main
 struct ItranslatorApp: App {
+    @Injected(\.sessionManager) private var sessionManager: SessionManagerProtocol
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             ItranslatorView(viewModel: ItranslatorViewModel())
 
-
-            }
+//            if sessionManager.getIsLoggedIn() {
+//                ItranslatorView(viewModel: ItranslatorViewModel())
+//                
+//            } else {
+               // LaunchView(viewModel: LaunchViewModel(languagesCount: 30))
+//            }
+            
+            
         }
     }
+}
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -32,3 +40,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     
 }
+
+

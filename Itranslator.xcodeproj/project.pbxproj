@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0188A32BDDB3210057AB92 /* LoadingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188A22BDDB3210057AB92 /* LoadingButtonModifier.swift */; };
+		AA0188A52BDDB3470057AB92 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188A42BDDB3470057AB92 /* PlaceholderView.swift */; };
+		AA0188A72BDDB3730057AB92 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188A62BDDB3730057AB92 /* SpinnerView.swift */; };
+		AA0188A92BDDB3920057AB92 /* ToolbarPrincipalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188A82BDDB3920057AB92 /* ToolbarPrincipalView.swift */; };
+		AA0188AB2BDDB3B00057AB92 /* TranslateButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188AA2BDDB3B00057AB92 /* TranslateButtons.swift */; };
+		AA0188AD2BDDB3D00057AB92 /* TranslatedEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0188AC2BDDB3D00057AB92 /* TranslatedEditor.swift */; };
+		AA0188AF2BDDB44E0057AB92 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA0188AE2BDDB44E0057AB92 /* .gitignore */; };
 		AA34721A2BD1A1350039E380 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3472192BD1A1350039E380 /* LaunchView.swift */; };
 		AA34721F2BD1A2A20039E380 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34721E2BD1A2A20039E380 /* LaunchViewModel.swift */; };
 		AA3472222BD29DC70039E380 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA3472212BD29DC70039E380 /* FirebaseAnalytics */; };
@@ -24,11 +31,22 @@
 		AA4EDF6B2BC9E8EE0008766D /* ItranslatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6A2BC9E8EE0008766D /* ItranslatorInteractor.swift */; };
 		AA4EDF6D2BC9EB160008766D /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */; };
 		AA4EDF6F2BC9EE630008766D /* ItranslatorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EDF6E2BC9EE630008766D /* ItranslatorManagerProtocol.swift */; };
+		AA8DA3BF2BD469F500F1E94E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8DA3BE2BD469F500F1E94E /* GoogleService-Info.plist */; };
+		AA8DA3C12BD47B6D00F1E94E /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8DA3C02BD47B6D00F1E94E /* LanguagePicker.swift */; };
+		AACBE3482BD3F8F500245E3C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBE3462BD3F8F500245E3C /* Config.swift */; };
 		AAECC99F2BD30BBE0058ED01 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AAECC99E2BD30BBE0058ED01 /* FirebaseAuth */; };
 		AAECC9A52BD324E40058ED01 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAECC9A32BD322A40058ED01 /* Config.plist */; };
+		AAECC9AA2BD32AE10058ED01 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECC9A92BD32AE10058ED01 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA0188A22BDDB3210057AB92 /* LoadingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButtonModifier.swift; sourceTree = "<group>"; };
+		AA0188A42BDDB3470057AB92 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		AA0188A62BDDB3730057AB92 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		AA0188A82BDDB3920057AB92 /* ToolbarPrincipalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrincipalView.swift; sourceTree = "<group>"; };
+		AA0188AA2BDDB3B00057AB92 /* TranslateButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateButtons.swift; sourceTree = "<group>"; };
+		AA0188AC2BDDB3D00057AB92 /* TranslatedEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedEditor.swift; sourceTree = "<group>"; };
+		AA0188AE2BDDB44E0057AB92 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AA3472192BD1A1350039E380 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		AA34721E2BD1A2A20039E380 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		AA4EDF422BC9D4950008766D /* Itranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Itranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +62,11 @@
 		AA4EDF6A2BC9E8EE0008766D /* ItranslatorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorInteractor.swift; sourceTree = "<group>"; };
 		AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
 		AA4EDF6E2BC9EE630008766D /* ItranslatorManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItranslatorManagerProtocol.swift; sourceTree = "<group>"; };
+		AA8DA3BE2BD469F500F1E94E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA8DA3C02BD47B6D00F1E94E /* LanguagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePicker.swift; path = ../../LanguagePicker.swift; sourceTree = "<group>"; };
+		AACBE3462BD3F8F500245E3C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = "../../../Downloads/openai-translator-swiftui-main/OpenAI Translator/Config.swift"; sourceTree = "<group>"; };
 		AAECC9A32BD322A40058ED01 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		AAECC9A92BD32AE10058ED01 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +120,10 @@
 		AA4EDF442BC9D4950008766D /* Itranslator */ = {
 			isa = PBXGroup;
 			children = (
+				AA8DA3BE2BD469F500F1E94E /* GoogleService-Info.plist */,
+				AACBE3462BD3F8F500245E3C /* Config.swift */,
+				AA8DA3C02BD47B6D00F1E94E /* LanguagePicker.swift */,
+				AACBE3392BD3F78A00245E3C /* ViewComponent */,
 				AAECC9A32BD322A40058ED01 /* Config.plist */,
 				AA4EDF452BC9D4950008766D /* ItranslatorApp.swift */,
 				AA4EDF492BC9D4960008766D /* Assets.xcassets */,
@@ -106,6 +132,8 @@
 				AA4EDF562BC9D5050008766D /* Data */,
 				AA4EDF532BC9D4B30008766D /* Presentation */,
 				AA4EDF6C2BC9EB150008766D /* InjectionKey.swift */,
+				AAECC9A92BD32AE10058ED01 /* AuthManager.swift */,
+				AA0188AE2BDDB44E0057AB92 /* .gitignore */,
 			);
 			path = Itranslator;
 			sourceTree = "<group>";
@@ -121,6 +149,7 @@
 		AA4EDF532BC9D4B30008766D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AAECC9A82BD328BF0058ED01 /* CustomTabBar */,
 				AAECC9A22BD31EEB0058ED01 /* TranslationHistoryScreen */,
 				AAECC9A12BD31EB00058ED01 /* SignUpScreen */,
 				AAECC9A02BD31E9E0058ED01 /* SignInScreen */,
@@ -199,6 +228,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AACBE3392BD3F78A00245E3C /* ViewComponent */ = {
+			isa = PBXGroup;
+			children = (
+				AA0188A22BDDB3210057AB92 /* LoadingButtonModifier.swift */,
+				AA0188A42BDDB3470057AB92 /* PlaceholderView.swift */,
+				AA0188A62BDDB3730057AB92 /* SpinnerView.swift */,
+				AA0188A82BDDB3920057AB92 /* ToolbarPrincipalView.swift */,
+				AA0188AA2BDDB3B00057AB92 /* TranslateButtons.swift */,
+				AA0188AC2BDDB3D00057AB92 /* TranslatedEditor.swift */,
+			);
+			name = ViewComponent;
+			path = "../../../Downloads/openai-translator-swiftui-main/OpenAI Translator/ViewComponent";
+			sourceTree = "<group>";
+		};
 		AAECC9A02BD31E9E0058ED01 /* SignInScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +263,13 @@
 			path = TranslationHistoryScreen;
 			sourceTree = "<group>";
 		};
+		AAECC9A82BD328BF0058ED01 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,7 +280,6 @@
 				AA4EDF3E2BC9D4950008766D /* Sources */,
 				AA4EDF3F2BC9D4950008766D /* Frameworks */,
 				AA4EDF402BC9D4950008766D /* Resources */,
-				AAB678482BCB5A6900C72AA1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,33 +337,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0188AF2BDDB44E0057AB92 /* .gitignore in Resources */,
 				AAECC9A52BD324E40058ED01 /* Config.plist in Resources */,
+				AA8DA3BF2BD469F500F1E94E /* GoogleService-Info.plist in Resources */,
 				AA4EDF4D2BC9D4960008766D /* Preview Assets.xcassets in Resources */,
 				AA4EDF4A2BC9D4960008766D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AAB678482BCB5A6900C72AA1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA4EDF3E2BC9D4950008766D /* Sources */ = {
@@ -324,15 +355,24 @@
 				AA4EDF652BC9DA130008766D /* ItranslatorView.swift in Sources */,
 				AA34721A2BD1A1350039E380 /* LaunchView.swift in Sources */,
 				AA4EDF692BC9DCF90008766D /* ItranslatorViewModel.swift in Sources */,
+				AA0188A92BDDB3920057AB92 /* ToolbarPrincipalView.swift in Sources */,
+				AA0188AB2BDDB3B00057AB92 /* TranslateButtons.swift in Sources */,
+				AAECC9AA2BD32AE10058ED01 /* AuthManager.swift in Sources */,
+				AA8DA3C12BD47B6D00F1E94E /* LanguagePicker.swift in Sources */,
 				AA4EDF602BC9D5C30008766D /* ItranslatorMapper.swift in Sources */,
 				AA4EDF6F2BC9EE630008766D /* ItranslatorManagerProtocol.swift in Sources */,
 				AA4EDF5E2BC9D5A90008766D /* ItranslatorModel.swift in Sources */,
 				AA4EDF6B2BC9E8EE0008766D /* ItranslatorInteractor.swift in Sources */,
 				AA4EDF462BC9D4950008766D /* ItranslatorApp.swift in Sources */,
 				AA4EDF5C2BC9D5880008766D /* ItranslatorRepository.swift in Sources */,
+				AACBE3482BD3F8F500245E3C /* Config.swift in Sources */,
 				AA4EDF6D2BC9EB160008766D /* InjectionKey.swift in Sources */,
 				AA4EDF622BC9D5E90008766D /* ItranslatorManager.swift in Sources */,
 				AA34721F2BD1A2A20039E380 /* LaunchViewModel.swift in Sources */,
+				AA0188A52BDDB3470057AB92 /* PlaceholderView.swift in Sources */,
+				AA0188A72BDDB3730057AB92 /* SpinnerView.swift in Sources */,
+				AA0188AD2BDDB3D00057AB92 /* TranslatedEditor.swift in Sources */,
+				AA0188A32BDDB3210057AB92 /* LoadingButtonModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -448,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
