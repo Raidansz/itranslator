@@ -5,100 +5,182 @@
 //  Created by Raidan on 12/04/2024.
 //
 import SwiftUI
+
+
 struct ItranslatorView: View {
-    @ObservedObject var viewModel: ItranslatorViewModel
-    @State private var debounceText: String = ""
-    @State private var isEditing: Bool = false
+    @StateObject var viewModel: ItranslatorViewModel
+    
+    @Environment(\.colorScheme) private var colorScheme
+    @State private var inputText = ""
+    @State private var outputText = ""
+    @State private var inputLanguage = ""
+    @State private var outputLanguage = ""
+    @State private var isInProcess = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    @FocusState private var isInputTextEditorFocused: Bool
+    @FocusState private var isOutputTextEditorFocused: Bool
     
     var body: some View {
         VStack {
-            Spacer()
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(Color(.secondarySystemBackground))
-                    .frame(width: 400, height: 200)
-                    .onTapGesture { // Resign focus when tapping outside
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                
-                TextView(text: $debounceText, isEditing: $isEditing)
-                    .padding()
-                    .frame(width: 400, height: 200)
-                    .background(Color(.secondarySystemBackground)) // Make entire frame writable
-            }
-            .padding(.horizontal)
-            Spacer()
-            
-            Button("Translate") {
-                viewModel.updateRemoteDB(translate: "raidan", translated: "اثاثاث")
-
-                viewModel.translate(sourceText: debounceText, sourceLanguage: "en", targetLanguages: "ar")
-            }
-            .padding()
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(10)
-            Spacer()
-            
-            Text(viewModel.currentTranslationModel?.text ?? "")
-                .padding()
-                .frame(width: 400, height: 200)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color(.secondarySystemBackground))
+            TranslatedEditor(inputText: $inputText, outputText: $outputText, inputLanguage: $inputLanguage, outputLanguage: $outputLanguage, isInProcess: $isInProcess, isInputTextEditorFocused: $isInputTextEditorFocused, isOutputTextEditorFocused: $isOutputTextEditorFocused, submit: submit)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(oppositeColorForScheme)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 40)
                 )
-                .padding(.horizontal)
-            Spacer()
+                .ignoresSafeArea()
+            
+            TranslateButtons(inputText: $inputText, outputText: $outputText, inputLanguage: $inputLanguage, outputLanguage: $outputLanguage, isInProcess: $isInProcess, isInputTextEditorFocused: $isInputTextEditorFocused, isOutputTextEditorFocused: $isOutputTextEditorFocused, submit: submit)
+                .background(colorScheme == .dark ? Color.blue.opacity(0.4) : Color.blue.opacity(0.1))
+                .frame(maxWidth: .infinity)
+                .padding()
         }
-        .padding()
-        .background(Color(.systemBackground))
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure view fills the screen
+        .background(oppositeColorForScheme)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                ToolbarPrincipalView().onTapGesture(perform: {
+                    isInputTextEditorFocused = false
+                    isOutputTextEditorFocused = false
+                })
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+//                NavigationLink(destination: SettingsView()) {
+//                    Image(systemName: "gear")
+//                        .foregroundColor(colorForScheme)
+//                }
+            }
+        }
+        .accentColor(.black)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Bazinga!"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .edgesIgnoringSafeArea(.bottom) // Ignore safe area at the bottom
+    }
+    
+    private func submit() {
+        if inputText.isEmpty {
+            return
+        }
+        if inputLanguage == outputLanguage {
+            // Show an alert if input and output languages are the same
+            showAlert = true
+            alertMessage = "You cannot translate to the same language."
+            return
+        }
+        
+        isInProcess = true
+        outputText = ""
+        
+        viewModel.translate(sourceText: inputText, sourceLanguage: inputLanguage, targetLanguages: outputLanguage) {
+            // This will get called after the translation is complete.
+            self.outputText = self.viewModel.currentTranslationModel?.text ?? ""
+            self.isInProcess = false
+        }
+    }
+    
+    var colorForScheme: Color {
+        colorScheme == .dark ? .white : .black
+    }
+    
+    var oppositeColorForScheme: Color {
+        colorScheme == .dark ? .black : .white
     }
 }
 
-struct TextView: UIViewRepresentable {
-    @Binding var text: String
-    @Binding var isEditing: Bool
-    
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
-        textView.isEditable = true
-        textView.isScrollEnabled = true
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.delegate = context.coordinator
-        return textView
-    }
-    
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = text
-        if isEditing {
-            uiView.becomeFirstResponder()
-        } else {
-            uiView.resignFirstResponder()
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(text: $text, isEditing: $isEditing)
-    }
-    
-    class Coordinator: NSObject, UITextViewDelegate {
-        @Binding var text: String
-        @Binding var isEditing: Bool
-        
-        init(text: Binding<String>, isEditing: Binding<Bool>) {
-            _text = text
-            _isEditing = isEditing
-        }
-        
-        func textViewDidChange(_ textView: UITextView) {
-            text = textView.text
-        }
-        
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            isEditing = true
-        }
-        
-        func textViewDidEndEditing(_ textView: UITextView) {
-            isEditing = false
-        }
-    }
-}
+
+
+
+
+//struct ItranslatorView: View {
+//    @StateObject var viewModel: ItranslatorViewModel
+//    
+//    @Environment(\.colorScheme) private var colorScheme
+//    @State private var inputText = ""
+//    @State private var outputText = ""
+//    @State private var inputLanguage = ""
+//    @State private var outputLanguage = ""
+//    @State private var isInProcess = false
+//    @State private var showAlert = false
+//    @State private var alertMessage = ""
+//    @FocusState private var isInputTextEditorFocused: Bool
+//    @FocusState private var isOutputTextEditorFocused: Bool
+//    
+//    var body: some View {
+//            NavigationView {
+//                VStack {
+//                    VStack {
+//                        VStack {
+//                            TranslatedEditor(inputText: $inputText, outputText: $outputText, inputLanguage: $inputLanguage, outputLanguage: $outputLanguage, isInProcess: $isInProcess, isInputTextEditorFocused: $isInputTextEditorFocused, isOutputTextEditorFocused: $isOutputTextEditorFocused, submit: submit)
+//                        }.background(oppositeColorForScheme).clipShape(
+//                            .rect(
+//                                topLeadingRadius: 0,
+//                                bottomLeadingRadius: 40,
+//                                bottomTrailingRadius: 40,
+//                                topTrailingRadius: 0
+//                            )
+//                        )
+//
+//                        TranslateButtons(inputText: $inputText, outputText: $outputText, inputLanguage: $inputLanguage, outputLanguage: $outputLanguage, isInProcess: $isInProcess, isInputTextEditorFocused: $isInputTextEditorFocused, isOutputTextEditorFocused: $isOutputTextEditorFocused, submit: submit).background(colorScheme == .dark ? Color.blue.opacity(0.4) : Color.blue.opacity(0.1))
+//                    }
+//                }
+//                .background(oppositeColorForScheme)
+//                .navigationBarTitleDisplayMode(.inline)
+//                .toolbar {
+//                    ToolbarItem(placement: .principal) {
+//                        ToolbarPrincipalView().onTapGesture(perform: {
+//                            isInputTextEditorFocused = false
+//                            isOutputTextEditorFocused = false
+//                        })
+//                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        NavigationLink(destination: ItranslatorView(viewModel: ItranslatorViewModel())) {
+//                            Image(systemName: "gear")
+//                                .foregroundColor(colorForScheme)
+//                        }
+//                    }
+//                }
+//            }.accentColor(.black)
+//            .alert(isPresented: $showAlert) {
+//                Alert(title: Text("Bazinga!"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+//            }
+//        }
+//    
+//    private func submit() {
+//        if inputText.isEmpty {
+//            return
+//        }
+//        if inputLanguage == outputLanguage {
+//                // Show an alert if input and output languages are the same
+//                showAlert = true
+//                alertMessage = "You cannot translate to the same language."
+//                return
+//            }
+//
+//        isInProcess = true
+//        outputText = ""
+//
+//        viewModel.translate(sourceText: inputText, sourceLanguage: inputLanguage, targetLanguages: outputLanguage) {
+//            // This will get called after the translation is complete.
+//            self.outputText = self.viewModel.currentTranslationModel?.text ?? ""
+//            self.isInProcess = false
+//        }
+//    }
+//    
+//    var colorForScheme: Color {
+//        colorScheme == .dark ? .white : .black
+//    }
+//    
+//    var oppositeColorForScheme: Color {
+//        colorScheme == .dark ? .black : .white
+//    }
+//}
+//
+//#Preview("Light mode") {
+//    ItranslatorView(viewModel: ItranslatorViewModel())
+//}
+//#Preview("Dark mode") {
+//    ItranslatorView(viewModel: ItranslatorViewModel()).environment(\.colorScheme, .dark)
+//}
