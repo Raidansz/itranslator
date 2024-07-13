@@ -12,7 +12,7 @@ This iOS application is an implementation of Azure AI Translate api to provide s
 - **Multiple Languages:** Support for a wide range of languages for translation.
 - **User-Friendly Interface:** Intuitive design for easy navigation and usage. TODO
 - **Offline Mode:** Ability to save translations for offline access. TODO
-- **History:** Keep track of previous translations for reference.  TODO
+- **History:** Keep track of previous translations for reference.  
 
 #### Installation:
 
