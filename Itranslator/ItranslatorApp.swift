@@ -15,14 +15,13 @@ struct ItranslatorApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            ItranslatorView(viewModel: ItranslatorViewModel())
-
-//            if sessionManager.getIsLoggedIn() {
-//                ItranslatorView(viewModel: ItranslatorViewModel())
-//                
-//            } else {
-               // LaunchView(viewModel: LaunchViewModel(languagesCount: 30))
-//            }
+            if sessionManager.getIsLoggedIn() {
+                ItranslatorView(viewModel: ItranslatorViewModel())
+                
+            } else {
+                LaunchView(viewModel: LaunchViewModel(languagesCount: 30))
+               // SwiftUIView()
+            }
             
             
         }
